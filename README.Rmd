@@ -26,14 +26,8 @@ It can also save ggiraph objects in html, svg, and png formats with `ggisaves`
 
 ## Installation
 
-Install ggsaves from CRAN
 
-```{r}
-install.packages('ggsaves')
-```
-
-
-Alternatively, install the development version of ggsaves from [GitHub](https://github.com/) with:
+Install the development version of ggsaves from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

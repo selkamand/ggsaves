@@ -19,20 +19,7 @@ It can also save ggiraph objects in html, svg, and png formats with
 
 ## Installation
 
-Install ggsaves from CRAN
-
-``` r
-install.packages('ggsaves')
-#> Installing package into '/private/var/folders/93/mb2bzm5j2v7625bbl3pnxb1h0000gp/T/RtmpbvOXCv/temp_libpath16ffc5a0c0cac'
-#> (as 'lib' is unspecified)
-#> Warning: package 'ggsaves' is not available for this version of R
-#> 
-#> A version of this package for your version of R might be available elsewhere,
-#> see the ideas at
-#> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
-```
-
-Alternatively, install the development version of ggsaves from
+Install the development version of ggsaves from
 [GitHub](https://github.com/) with:
 
 ``` r
