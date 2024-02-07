@@ -14,7 +14,7 @@ ggsaves saves a ggplot as a PDF, 300dpi PNG, and SVG all at once. This
 is an exceptionally simple convenience package that wraps
 `ggplot2::ggsave()`.
 
-It can also save ggiraph objects in html, svg, and png formats with
+It can also save ggiraph objects in HTML, SVG, and PDF formats with
 `ggisaves`
 
 ## Installation
