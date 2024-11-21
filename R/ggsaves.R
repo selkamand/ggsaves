@@ -16,6 +16,9 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
   # PNG
   ggplot2::ggsave(plot = plot, filename = paste0(prefix, '.', dpi, 'dpi', '.png'), path = outfolder, device = "png", dpi = dpi, width = width, height = height, ...)
 
+  # TIFF
+  ggplot2::ggsave(plot = plot, filename =  paste0(prefix, '.', dpi, 'dpi', '.tiff'), path = outfolder, device = "tiff", width = width, height = height, dpi = dpi, compression = "lzw", ...)
+
   # PDF
   ggplot2::ggsave(plot = plot, filename = paste0(prefix, '.pdf'), path = outfolder, device = "pdf",width = width, height = height, ...)
 
