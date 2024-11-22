@@ -11,9 +11,9 @@ ggisaves(
   title = prefix,
   knitrOptions,
   background = "white",
+  dpi = 300,
   width = 8,
-  height = 5,
-  dpi = 300
+  height = 5
 )
 }
 \arguments{

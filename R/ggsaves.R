@@ -54,10 +54,14 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
 #'
 #'    ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = ".")
 #' }
-ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, background = "white", width = 8, height = 5, dpi = 300){
+ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, background = "white", dpi = 300, width = 8, height = 5){
 
   # Assert Plot is a htmlwidget
   if(!inherits(plot, "htmlwidget")) stop("plot must be a htmlwidget object to save with ggisaves")
+
+  # Check Interactive plot actually contains some html code
+  html <- plot$x$html
+  if(nchar(html) == 0) stop("No HTML code found in htmlwidget plot. Are you sure this plot is a valid htmlwidget?")
 
   if(!dir.exists(outfolder)){
     permission = utils::askYesNo(paste0("Cannot find directory: ", outfolder, ". Would you like to create a new directory?"), default = TRUE)
@@ -65,6 +69,8 @@ ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, back
       dir.create(outfolder)
     else stop("Output directory [", outfolder, "] does not exist. Please create then try again")
   }
+
+
 
   # Configure Width and Height of htmlwidget plot
   plot$width <- width
@@ -76,7 +82,7 @@ ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, back
   outfile_svg <- paste0(extensionless_filepath, '.svg')
   outfile_pdf <- paste0(extensionless_filepath, '.pdf')
   outfile_png <- paste0(extensionless_filepath, '.', dpi,'dpi', '.png')
-
+  outfile_tiff <- paste0(extensionless_filepath, '.', dpi,'dpi', '.tiff')
   # [Export HTLM, SVG, and Vector PDF]
 
   # HTML
@@ -90,6 +96,11 @@ ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, back
 
   # PNG
   rsvg::rsvg_png(svg = outfile_svg, file = outfile_png, width = width * dpi, height = height * dpi)
+
+  # TIFF
+  image <- magick::image_read_svg(outfile_svg, width = width*dpi, height = height*dpi)
+  magick::image_write(image, path = outfile_tiff, format = "tiff", compression="lzw", density=dpi)
+
 
   # Return NULL invisibly
   invisible(NULL)
