@@ -6,3 +6,4 @@
 ^cran-comments\.md$
 plots/
 interactive_plots/
+^codecov\.yml$
