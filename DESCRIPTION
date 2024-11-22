@@ -1,10 +1,10 @@
 Package: ggsaves
-Title: Save GGplots in common formats with One Function
+Title: Easily Save Static or Interactive Plots to Common File Formats
 Version: 0.0.0.9000
 Authors@R: 
-    person("Sam", "El-Kamand", , "selkamand@ccia.org.au", role = c("aut", "cre"),
+    person("Sam", "El-Kamand", , "selkamand@ccia.org.au", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "https://orcid.org/0000-0003-2270-8088"))
-Description: Save GGplots as SVG, PDF, and 300dpi PNGs all in a single function call.
+Description: Simultaneously save ggplots or interactive plots to standard file formats (PDF, SVG, PNG, TIFF, HTML).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
