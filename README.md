@@ -8,8 +8,6 @@
 [![R-CMD-check](https://github.com/selkamand/ggsaves/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/ggsaves/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/selkamand/ggsaves/graph/badge.svg)](https://app.codecov.io/gh/selkamand/ggsaves)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/ggsaves)](https://CRAN.R-project.org/package=ggsaves)
 ![GitHub Issues or Pull
 Requests](https://img.shields.io/github/issues-closed/selkamand/ggsaves)
 [![code
