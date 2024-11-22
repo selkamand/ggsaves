@@ -8,16 +8,17 @@ ggisaves(
   plot,
   prefix,
   outfolder,
-  dpi = 300,
   title = prefix,
   knitrOptions,
   background = "white",
+  dpi = 300,
   width = 8,
-  height = 5,
-  ...
+  height = 5
 )
 }
 \arguments{
+\item{plot}{a htmlwidget plot to save in standard file formats.}
+
 \item{prefix}{filename without extension}
 
 \item{outfolder}{folder to save files in}
@@ -29,7 +30,9 @@ ggisaves(
 \item{background}{Text string giving the html background color of the widget.
 Defaults to white.}
 
-\item{width, height}{Plot size in units ("in", "cm", "mm", or "px"). If not supplied, uses the size of current graphics device.}
+\item{dpi}{resolution to save raster image files.}
+
+\item{width, height}{Plot size in inches.}
 }
 \value{
 Run for its side effects. Returns invisible(NULL)

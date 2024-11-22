@@ -32,14 +32,20 @@ devtools::install_github("selkamand/ggsaves")
 Saving a ggplot
 
 ``` r
+unlink("plots")
+```
+
+``` r
 library(ggplot2)
 library(ggsaves)
+
+# Create Output Directory
 
 gg_plot <- mtcars |> 
   ggplot(aes(mpg, cyl)) + 
   geom_point() 
 
-ggsaves(gg_plot, prefix = "myplot",  outfolder = ".")
+ggsaves(gg_plot, prefix = "myplot",  outfolder = "plots")
 ```
 
 Saving a ggiraph plot
@@ -52,5 +58,5 @@ gg_plot <- iris |>
 
  interactive_gg_plot <- girafe(ggobj = gg_plot)
  
- ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = ".")
+ ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = "interactive_plots")
 ```
