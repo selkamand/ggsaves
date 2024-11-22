@@ -33,7 +33,7 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
 #' Save interactive plot to common filetypes
 #'
 #' @inheritParams htmlwidgets::saveWidget
-#' @param width,height Plot size in units ("in", "cm", "mm", or "px"). If not supplied, uses the size of current graphics device.
+#' @param width,height Plot size in inches. If not supplied, uses the size of current graphics device.
 #' @param prefix filename without extension
 #' @param outfolder folder to save files in
 #'
@@ -54,14 +54,28 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
 #'
 #'    ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = ".")
 #' }
-ggisaves <- function(plot, prefix, outfolder, dpi = 300, title = prefix, knitrOptions, background = "white", width = 8, height = 5, ...){
+ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, background = "white", width = 8, height = 5, dpi = 300){
+
+  # Assert Plot is a htmlwidget
+  if(!inherits(plot, "htmlwidget")) stop("plot must be a htmlwidget object to save with ggisaves")
+
+  if(!dir.exists(outfolder)){
+    permission = utils::askYesNo(paste0("Cannot find directory: ", outfolder, ". Would you like to create a new directory?"), default = TRUE)
+    if(permission)
+      dir.create(outfolder)
+    else stop("Output directory [", outfolder, "] does not exist. Please create then try again")
+  }
+
+  # Configure Width and Height of htmlwidget plot
+  plot$width <- width
+  plot$height <- height
 
   # Outfiles
   extensionless_filepath <- paste0(outfolder, "/", prefix)
   outfile_html <- paste0(extensionless_filepath, '.html')
   outfile_svg <- paste0(extensionless_filepath, '.svg')
   outfile_pdf <- paste0(extensionless_filepath, '.pdf')
-
+  outfile_png <- paste0(extensionless_filepath, '.', dpi,'dpi', '.png')
 
   # [Export HTLM, SVG, and Vector PDF]
 
@@ -72,8 +86,11 @@ ggisaves <- function(plot, prefix, outfolder, dpi = 300, title = prefix, knitrOp
   writeLines(plot$x$html, outfile_svg)
 
   # Vector PDF
-  rsvg::rsvg_pdf(svg = outfile_svg, file = outfile_pdf)
+  rsvg::rsvg_pdf(svg = outfile_svg, file = outfile_pdf, width = width * dpi, height = height * dpi)
 
+  # PNG
+  rsvg::rsvg_png(svg = outfile_svg, file = outfile_png, width = width * dpi, height = height * dpi)
+
+  # Return NULL invisibly
   invisible(NULL)
-
 }

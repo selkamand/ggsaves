@@ -8,8 +8,9 @@ Description: Save GGplots as SVG, PDF, and 300dpi PNGs all in a single function 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports: 
+    assertions,
     ggplot2,
     htmlwidgets,
     rsvg

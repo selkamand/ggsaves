@@ -8,13 +8,12 @@ ggisaves(
   plot,
   prefix,
   outfolder,
-  dpi = 300,
   title = prefix,
   knitrOptions,
   background = "white",
   width = 8,
   height = 5,
-  ...
+  dpi = 300
 )
 }
 \arguments{
@@ -29,7 +28,7 @@ ggisaves(
 \item{background}{Text string giving the html background color of the widget.
 Defaults to white.}
 
-\item{width, height}{Plot size in units ("in", "cm", "mm", or "px"). If not supplied, uses the size of current graphics device.}
+\item{width, height}{Plot size in inches. If not supplied, uses the size of current graphics device.}
 }
 \value{
 Run for its side effects. Returns invisible(NULL)
