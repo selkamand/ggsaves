@@ -13,6 +13,8 @@
 #'
 ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, ...){
 
+  check_installed("svglite")
+
   # PNG
   ggplot2::ggsave(plot = plot, filename = paste0(prefix, '.', dpi, 'dpi', '.png'), path = outfolder, device = "png", dpi = dpi, width = width, height = height, ...)
 
@@ -22,6 +24,7 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
   # PDF
   ggplot2::ggsave(plot = plot, filename = paste0(prefix, '.pdf'), path = outfolder, device = "pdf",width = width, height = height, ...)
 
+
   # SVG
   ggplot2::ggsave(plot = plot, filename = paste0(prefix, '.svg'), path = outfolder, device = "svg",width = width, height = height, ...)
 
@@ -29,11 +32,12 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
 
 }
 
-
 #' Save interactive plot to common filetypes
 #'
 #' @inheritParams htmlwidgets::saveWidget
-#' @param width,height Plot size in inches. If not supplied, uses the size of current graphics device.
+#' @param plot a htmlwidget plot to save in standard file formats.
+#' @param dpi resolution to save raster image files.
+#' @param width,height Plot size in inches.
 #' @param prefix filename without extension
 #' @param outfolder folder to save files in
 #'
@@ -104,4 +108,10 @@ ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, back
 
   # Return NULL invisibly
   invisible(NULL)
+}
+
+check_installed <- function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    stop(paste("Package", pkg, "is not installed. Please install it with install.packages('", pkg, "')"), call. = FALSE)
+  }
 }

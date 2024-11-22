@@ -17,6 +17,8 @@ ggisaves(
 )
 }
 \arguments{
+\item{plot}{a htmlwidget plot to save in standard file formats.}
+
 \item{prefix}{filename without extension}
 
 \item{outfolder}{folder to save files in}
@@ -28,7 +30,9 @@ ggisaves(
 \item{background}{Text string giving the html background color of the widget.
 Defaults to white.}
 
-\item{width, height}{Plot size in inches. If not supplied, uses the size of current graphics device.}
+\item{dpi}{resolution to save raster image files.}
+
+\item{width, height}{Plot size in inches.}
 }
 \value{
 Run for its side effects. Returns invisible(NULL)
