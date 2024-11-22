@@ -27,6 +27,10 @@ HTML, SVG, PDF, PNG and TIFF formats with `ggisaves()`
 
 ## Installation
 
+    install.packages("ggsaves")
+
+### Development Version
+
 Install the development version of ggsaves from
 [GitHub](https://github.com/) with:
 
@@ -39,24 +43,20 @@ remotes::install_github("selkamand/ggsaves")
 
 ## Quick Start
 
-Saving a ggplot
-
-``` r
-unlink("plots")
-```
+Saving a ggplot:
 
 ``` r
 library(ggplot2)
 library(ggsaves)
 
 # Create Plot
-gg_plot <- ggplot(mtcars, aes(mpg, cyl)) +geom_point() 
+gg_plot <- ggplot(mtcars, aes(mpg, cyl)) + geom_point() 
 
 # Save as all common file formats
 ggsaves(gg_plot, prefix = "myplot",  outfolder = "plots")
 ```
 
-Saving a ggiraph plot
+Saving a ggiraph plot (or other HTMLwidget visualisation):
 
 ``` r
 library(ggiraph)

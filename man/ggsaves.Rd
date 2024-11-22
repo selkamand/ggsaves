@@ -51,3 +51,14 @@ Run for its side effects. Returns invisible(NULL)
 \description{
 Save plot to common filetypes
 }
+\examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(ggplot2)
+
+# Create Plot
+gg_plot <- ggplot(mtcars, aes(mpg, cyl)) + geom_point()
+
+# Save as all common file formats
+ggsaves(gg_plot, prefix = "myplot",  outfolder = "plots")
+\dontshow{\}) # examplesIf}
+}

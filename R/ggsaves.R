@@ -5,11 +5,19 @@
 #' @param width,height Plot size in units ("in", "cm", "mm", or "px"). If not supplied, uses the size of current graphics device.
 #' @param prefix filename without extension
 #' @param outfolder folder to save files in
-
 #' @param ...
 #'
 #' @return Run for its side effects. Returns invisible(NULL)
 #' @export
+#'
+#' @examplesIf interactive()
+#' library(ggplot2)
+#'
+#' # Create Plot
+#' gg_plot <- ggplot(mtcars, aes(mpg, cyl)) + geom_point()
+#'
+#' # Save as all common file formats
+#' ggsaves(gg_plot, prefix = "myplot",  outfolder = "plots")
 #'
 ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, ...){
 
@@ -44,20 +52,18 @@ ggsaves <- function(plot, prefix, outfolder, dpi = 300, width = 8, height = 5, .
 #' @return Run for its side effects. Returns invisible(NULL)
 #' @export
 #'
-#' @examples
+#' @examplesIf interactive()
+#' library(ggplot2)
+#' library(ggiraph)
+#' # Make static ggplot
+#' gg_plot <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+#'   geom_point_interactive(aes(data_id  = Species, tooltip = Species))
 #'
-#' \dontrun{
-#'  library(ggiraph)
-#'  library(ggplot2)
+#' # Create interactive HTMLwidget
+#' interactive_gg_plot <- girafe(ggobj = gg_plot)
 #'
-#'  gg_plot <- iris |>
-#'      ggplot(aes(Sepal.Length, Sepal.Width)) +
-#'      geom_point_interactive(aes(data_id  = Species, tooltip = Species))
-#'
-#'    interactive_gg_plot <- girafe(ggobj = gg_plot)
-#'
-#'    ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = ".")
-#' }
+#' # Save HTMLwidget
+#' ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = "interactive_plots")
 ggisaves <- function(plot, prefix, outfolder, title = prefix, knitrOptions, background = "white", dpi = 300, width = 8, height = 5){
 
   # Assert Plot is a htmlwidget

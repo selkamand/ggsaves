@@ -41,17 +41,17 @@ Run for its side effects. Returns invisible(NULL)
 Save interactive plot to common filetypes
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+library(ggplot2)
+library(ggiraph)
+# Make static ggplot
+gg_plot <- ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_point_interactive(aes(data_id  = Species, tooltip = Species))
 
-\dontrun{
- library(ggiraph)
- library(ggplot2)
+# Create interactive HTMLwidget
+interactive_gg_plot <- girafe(ggobj = gg_plot)
 
- gg_plot <- iris |>
-     ggplot(aes(Sepal.Length, Sepal.Width)) +
-     geom_point_interactive(aes(data_id  = Species, tooltip = Species))
-
-   interactive_gg_plot <- girafe(ggobj = gg_plot)
-
-   ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = ".")
-}
+# Save HTMLwidget
+ggisaves(interactive_gg_plot, prefix = "my_interactive_plot", outfolder = "interactive_plots")
+\dontshow{\}) # examplesIf}
 }
